@@ -28,7 +28,7 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Setup")
     FRotator DefaultSpawnRotation = FRotator(0, 90, 0);
 
-    // Player 1 Input (WASD)
+    // Player 1 Input 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
     UInputMappingContext* Player1MappingContext;
 

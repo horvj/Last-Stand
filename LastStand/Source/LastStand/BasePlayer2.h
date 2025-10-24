@@ -21,14 +21,14 @@ protected:
     virtual void BeginPlay() override;
     virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
-    // Player 2 spawn info (opposite side)
+    // Player 2 spawn info 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Setup")
     FVector DefaultSpawnLocation = FVector(200, 0, 100);
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Setup")
     FRotator DefaultSpawnRotation = FRotator(0, -90, 0);
 
-    // Player 2 Input (Arrow Keys)
+    // Player 2 Input 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
     UInputMappingContext* Player2MappingContext;
 

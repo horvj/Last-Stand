@@ -33,16 +33,29 @@ void ABasePlayer2::BeginPlay()
 {
     Super::BeginPlay();
 
+    // Debug to see if Player 2 is being possessed
+    UE_LOG(LogTemp, Warning, TEXT("Player2 BeginPlay - Controller: %s"), Controller ? TEXT("YES") : TEXT("NO"));
+
     // Add Input Mapping Context for Player 2
     if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
     {
+        UE_LOG(LogTemp, Warning, TEXT("Player2 has PlayerController!"));
         if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
         {
             if (Player2MappingContext)
             {
+                UE_LOG(LogTemp, Warning, TEXT("Player2 adding mapping context"));
                 Subsystem->AddMappingContext(Player2MappingContext, 0);
             }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Player2 mapping context is NULL!"));
+            }
         }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Player2 has NO PlayerController!"));
     }
 }
 

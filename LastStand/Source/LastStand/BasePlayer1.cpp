@@ -16,7 +16,7 @@ ABasePlayer1::ABasePlayer1()
     GetCapsuleComponent()->SetCapsuleRadius(34.0f);
 
     // Configure character movement for Street Fighter style
-    GetCharacterMovement()->bOrientRotationToMovement = false; // Don't auto-rotate
+    GetCharacterMovement()->bOrientRotationToMovement = false; 
     GetCharacterMovement()->MaxWalkSpeed = 400.0f;
     GetCharacterMovement()->BrakingDecelerationWalking = 2048.0f;
     GetCharacterMovement()->GroundFriction = 8.0f;
@@ -67,14 +67,14 @@ void ABasePlayer1::Move(const FInputActionValue& Value)
 
     UE_LOG(LogTemp, Warning, TEXT("Player1 Move: X=%f, Y=%f"), MovementVector.X, MovementVector.Y);
 
-    if (Controller != nullptr && MovementVector.Y != 0.0f)  // Use Y instead of X
+    if (Controller != nullptr && MovementVector.Y != 0.0f)  
     {
         FVector RightDirection = FVector(0, 1, 0);
-        AddMovementInput(RightDirection, MovementVector.Y);  // Use Y instead of X
+        AddMovementInput(RightDirection, MovementVector.Y); 
     }
 
 
-    // **STREET FIGHTER STYLE: Zero out Y axis (no forward/back movement)**
+    // Zero out Y axis (no forward/back movement)
     MovementVector.Y = 0.0f;
 
     if (Controller != nullptr)
