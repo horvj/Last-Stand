@@ -8,6 +8,8 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class UCharacterData;
+class UAbilitySystemComponent;
 
 UCLASS()
 class LASTSTAND_API ABasePlayer1 : public ACharacter
@@ -20,6 +22,13 @@ public:
 protected:
     virtual void BeginPlay() override;
     virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
+    // Character Data Asset
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
+    class UCharacterData* CharacterData;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
+    class UAbilitySystemComponent* AbilitySystemComponent;
 
     // Player 1 spawn info
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Player Setup")
@@ -41,6 +50,9 @@ protected:
     // Movement function
     void Move(const FInputActionValue& Value);
 
+    // Initialize character from data asset
+    void InitializeCharacterFromData();
+
 public:
     // Getters for spawn info
     UFUNCTION(BlueprintPure, Category = "Player Setup")
@@ -48,4 +60,16 @@ public:
 
     UFUNCTION(BlueprintPure, Category = "Player Setup")
     FRotator GetDefaultSpawnRotation() const { return DefaultSpawnRotation; }
+
+    // Setters and Getters for character data
+    UFUNCTION(BlueprintCallable, Category = "Character")
+    void SetCharacterData(UCharacterData* InCharacterData);
+
+    UFUNCTION(BlueprintPure, Category = "Character")
+    UCharacterData* GetCharacterData() const { return CharacterData; }
+
+    UFUNCTION(BlueprintPure, Category = "Combat")
+    UAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComponent; }
+
+
 };

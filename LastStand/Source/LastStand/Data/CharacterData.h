@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "Abilities/GameplayAbility.h" 
 #include "CharacterData.generated.h"
 
 /**
@@ -21,8 +22,8 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
     class USkeletalMesh* SkeletalMesh;
 
-    /*UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Abilities")
-    TSubclassOf<class UGameplayAbility> SpecialAbility;*/
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Abilities")
+    TSubclassOf<class UGameplayAbility> SpecialAbility;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
     float Health = 100.0f;
@@ -30,5 +31,4 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
     float AttackPower = 1.0f;
 
-	
 };

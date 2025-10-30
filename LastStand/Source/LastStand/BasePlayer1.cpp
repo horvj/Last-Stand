@@ -6,6 +6,9 @@
 #include "GameFramework/Controller.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "AbilitySystemComponent.h"
+#include "Data/CharacterData.h"
+#include "Subsystems/CharacterSelectSubsytem.h"
 
 ABasePlayer1::ABasePlayer1()
 {
@@ -27,11 +30,17 @@ ABasePlayer1::ABasePlayer1()
     bUseControllerRotationPitch = false;
     bUseControllerRotationYaw = false;
     bUseControllerRotationRoll = false;
+
+    // Create Ability System Component
+    AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+
 }
 
 void ABasePlayer1::BeginPlay()
 {
     Super::BeginPlay();
+
+    InitializeCharacterFromData();
 
     // Add Input Mapping Context for Player 1
     if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
@@ -44,6 +53,40 @@ void ABasePlayer1::BeginPlay()
             }
         }
     }
+}
+
+void ABasePlayer1::InitializeCharacterFromData()
+{
+    if (!CharacterData)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("ABasePlayer1::InitializeCharacterFromData - No CharacterData assigned!"));
+        return;
+    }
+
+    // Set skeletal mesh
+    if (CharacterData->SkeletalMesh)
+    {
+        GetMesh()->SetSkeletalMesh(CharacterData->SkeletalMesh);
+    }
+
+    // Apply stats
+    // You might want to store these in a stats component or player state
+    // For now, just log them as an example
+    UE_LOG(LogTemp, Warning, TEXT("Character: %s - Health: %f, Attack Power: %f"),
+        *CharacterData->CharacterName, CharacterData->Health, CharacterData->AttackPower);
+
+    // Grant special ability
+    if (CharacterData->SpecialAbility && AbilitySystemComponent)
+    {
+        AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(CharacterData->SpecialAbility, 1, 0));
+        UE_LOG(LogTemp, Warning, TEXT("Granted special ability to %s"), *CharacterData->CharacterName);
+    }
+}
+
+void ABasePlayer1::SetCharacterData(UCharacterData* InCharacterData)
+{
+    CharacterData = InCharacterData;
+    InitializeCharacterFromData();
 }
 
 void ABasePlayer1::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
