@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class LASTSTAND_API UCharacterData : public UDataAsset
 {
 	GENERATED_BODY()
