@@ -59,7 +59,6 @@ void ABasePlayer1::InitializeCharacterFromData()
 {
     if (!CharacterData)
     {
-        UE_LOG(LogTemp, Warning, TEXT("ABasePlayer1::InitializeCharacterFromData - No CharacterData assigned!"));
         return;
     }
 
@@ -108,7 +107,6 @@ void ABasePlayer1::Move(const FInputActionValue& Value)
 {
     FVector2D MovementVector = Value.Get<FVector2D>();
 
-    UE_LOG(LogTemp, Warning, TEXT("Player1 Move: X=%f, Y=%f"), MovementVector.X, MovementVector.Y);
 
     if (Controller != nullptr && MovementVector.Y != 0.0f)  
     {
