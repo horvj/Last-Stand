@@ -26,7 +26,7 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
     UCharacterData* CharacterData;
 
-    UPROPERTY()
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
     UAbilitySystemComponent* AbilitySystemComponent;
 
     // Character initialization
