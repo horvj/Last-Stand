@@ -43,8 +43,6 @@ void ABasePlayer2::InitializeCharacterFromData()
         GetMesh()->SetSkeletalMesh(CharacterData->SkeletalMesh);
     }
 
-    UE_LOG(LogTemp, Warning, TEXT("Character: %s - Health: %f, Attack Power: %f"),
-        *CharacterData->CharacterName, CharacterData->Health, CharacterData->AttackPower);
 
     if (CharacterData->SpecialAbility && AbilitySystemComponent)
     {
