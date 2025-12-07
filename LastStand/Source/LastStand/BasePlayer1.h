@@ -24,7 +24,7 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
     UAbilitySystemComponent* AbilitySystemComponent;
     
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
     float PlayerHealth;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
