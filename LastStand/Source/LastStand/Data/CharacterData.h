@@ -26,9 +26,12 @@ public:
     TSubclassOf<class UGameplayAbility> SpecialAbility;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
-    float Health = 100.0f;
+    float CharacterHealth = 100.0f;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
-    float AttackPower = 1.0f;
+    float CharacterPunchAttackPower = 1.0f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
+    float CharacterKickAttackPower = 1.0f;
 
 };

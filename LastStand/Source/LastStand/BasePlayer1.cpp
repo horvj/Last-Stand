@@ -43,13 +43,24 @@ void ABasePlayer1::InitializeCharacterFromData()
         GetMesh()->SetSkeletalMesh(CharacterData->SkeletalMesh);
     }
 
-    UE_LOG(LogTemp, Warning, TEXT("Character: %s - Health: %f, Attack Power: %f"),
-        *CharacterData->CharacterName, CharacterData->Health, CharacterData->AttackPower);
-
     if (CharacterData->SpecialAbility && AbilitySystemComponent)
     {
         AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(CharacterData->SpecialAbility, 1, 0));
-        UE_LOG(LogTemp, Warning, TEXT("Granted special ability to %s"), *CharacterData->CharacterName);
+    }
+
+    if (CharacterData->CharacterHealth)
+    {
+        PlayerHealth = CharacterData->CharacterHealth;
+    }
+    
+    if (CharacterData->CharacterPunchAttackPower)
+    {
+        PlayerPunchAttackPower = CharacterData->CharacterPunchAttackPower;
+    }
+
+    if (CharacterData->CharacterKickAttackPower)
+    {
+        PlayerKickAttackPower = CharacterData->CharacterKickAttackPower;
     }
 }
 

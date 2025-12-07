@@ -23,6 +23,15 @@ protected:
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
     UAbilitySystemComponent* AbilitySystemComponent;
+    
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
+    float PlayerHealth;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
+    float PlayerPunchAttackPower = 1.0f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
+    float PlayerKickAttackPower = 1.0f;
 
     // Character initialization
     void InitializeCharacterFromData();
