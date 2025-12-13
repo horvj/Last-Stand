@@ -18,7 +18,7 @@ protected:
     virtual void BeginPlay() override;
 
     // Character Data
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
     UCharacterData* CharacterData;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
